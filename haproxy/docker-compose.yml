@@ -1,0 +1,28 @@
+weba:
+  build: ./node
+  expose:
+    - 80
+
+webb:
+  build: ./node
+  expose:
+    - 80
+
+webc:
+  build: ./node
+  expose:
+    - 80
+
+haproxy:
+  build: ./haproxy
+  links:
+   - weba
+   - webb
+   - webc
+  ports:
+   - "80:80"
+   - "70:70"
+
+  expose:
+   - "80"
+   - "70"
